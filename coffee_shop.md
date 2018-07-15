@@ -6,24 +6,24 @@ app.js - starts the service and handles the endpoints
 coffee_shops.js - manages the coffee shop info repository
 locations.csv - the coffee shop info loaded on startup
 
-Dependencies:
-npm install express
-npm install joi
-npm install @google/maps
+Dependencies:<br>
+npm install express<br>
+npm install joi<br>
+npm install @google/maps<br>
 (If you are using an older version of npm, add the --save option.)
 
 The service listens on port 3000 by default, or on the port specified in the PORT environment variable.
 
-JSON Endpoints:
+JSON Endpoints:<br>
 
-LOOKUP: Request: POST /api/coffeeshop/lookup { id: integer } response: { id: integer, name: string, address: string, lat: real, lon: real }
+LOOKUP: <br>  Request: POST /api/coffeeshop/lookup { id: integer } <br>  response: { id: integer, name: string, address: string, lat: real, lon: real }<br>
 
-CREATE: Request: POST /api/coffeeshop/create { id: integer, name: string, address: string, lat: real, lon: real } Response: { id: integer }
+CREATE:<br> Request: POST /api/coffeeshop/create { id: integer, name: string, address: string, lat: real, lon: real } <br>Response: { id: integer }<br>
 
-UPDATE: Request: PUT /api/coffeeshop/update { id: integer, name: string, address: string, lat: real, lon: real } Response: { id: integer }
+UPDATE:<br> Request: PUT /api/coffeeshop/update { id: integer, name: string, address: string, lat: real, lon: real }<br> Response: { id: integer }<br>
 
-DELETE: Request: DELETE /api/coffeeshop/delete { id: integer } Response: { id: integer }
+DELETE:<br> Request: DELETE /api/coffeeshop/delete { id: integer } <br>Response: { id: integer } <br>
 
-FIND NEAREST: Request: POST /api/coffeeshop/nearest { address: string } Response: { name: string }
+FIND NEAREST: <br>Request: POST /api/coffeeshop/nearest { address: string } <br>Response: { name: string }<br>
 
 ERRORS - When errors are encountered, such a an invalid ID or invalid LAT/LON, a 404 error is returned with an explanatory message.
