@@ -12,6 +12,8 @@ npm install joi<br>
 npm install @google/maps<br>
 (If you are using an older version of npm, add the --save option.)
 
+To run: node app.js<br>
+
 The service listens on port 3000 by default, or on the port specified in the PORT environment variable.
 
 JSON Endpoints:<br>
