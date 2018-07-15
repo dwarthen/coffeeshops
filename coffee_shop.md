@@ -1,4 +1,4 @@
-coffeeshops
+coffeeshops<br><br>
 A JSON RESTful service in node.js to maintain a list of coffee shops and to find the nearest one to an input address.
 
 It consists of three files:
