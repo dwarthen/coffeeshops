@@ -45,7 +45,7 @@ app.post('/api/coffeeshop/lookup', (req, res) => {
     }
 
     //find the coffee shop
-    const shop = cs.lookup(req.body.id);
+    const shop = cs.lookup(Number(req.body.id));
     if (shop) {
         //a match was found
         res.send(shop);
@@ -71,7 +71,7 @@ app.post('/api/coffeeshop/create', (req, res) => {
         return res.status(400).send(error.details[0].message);
     }
 
-    const newShopId = cs.add(-1, req.body.name, req.body.address, req.body.lat, req.body.lon);
+    const newShopId = cs.add(-1, req.body.name, req.body.address, Number(req.body.lat), Number(req.body.lon));
 
     res.send({id: newShopId});
 });
@@ -120,7 +120,7 @@ app.put('/api/coffeeshop/update', (req, res) => {
         return res.status(400).send(error.details[0].message);
     }
 
-    let matchId = cs.update(req.body.id, req.body.name, req.body.address, req.body.lat, req.body.lon);
+    let matchId = cs.update(Number(req.body.id), req.body.name, req.body.address, Number(req.body.lat), Number(req.body.lon));
     if (matchId) {
         res.send({id: matchId});
     }
