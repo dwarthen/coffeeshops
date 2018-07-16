@@ -22,11 +22,22 @@ class CoffeeShop {
         this.lat = lat;
         this.lon = lon;
     }
-}
+
+    compare(id) {
+        return (this.id === id);
+    }
+
+    update(name, address, lat, lon) {
+        this.name = name;
+        this.address = address;
+        this.lat = lat;
+        this.lon = lon;
+    }
+} //end class CoffeeShop
 
 //lookup a coffee shop given its id
 function lookup(id) {
-    const shop = coffeeShops.find(c => c.id === id);
+    const shop = coffeeShops.find(c => c.compare(id));
     if (shop) {
         return shop;
     }
@@ -54,10 +65,9 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
     lat2 = deg2Rad(lat2);
     lon1 = deg2Rad(lon1);
     lon2 = deg2Rad(lon2);
-    var x = (lon2-lon1);
-    var y = (lat2-lat1);
-    var d = Math.sqrt(x*x + y*y);
-    return d;
+    let x = (lon2-lon1);
+    let y = (lat2-lat1);
+    return Math.sqrt(x*x + y*y);
 }
 
 //find the nearest coffee shop from the specified coordinates (lat & lon)
@@ -76,23 +86,20 @@ function findNearest(lat, lon) {
 
 function update(id, name, address, lat, lon) {
     //find the coffee shop based on ID
-    const shop = coffeeShops.find(c => c.id === id);
+    const shop = coffeeShops.find(c => c.compare(id));
     if (!shop) {
         return undefined;
     }
 
     //a match was found, so update the coffee shop
-    shop.name = name;
-    shop.address = address;
-    shop.lat = lat;
-    shop.lon = lon;
+    shop.update(name, address, lat, lon);
 
     return shop.id;
 }
 
 function deleteCoffeeShop(id) {
     //find the coffee shop to delete by ID
-    const shopIndex = coffeeShops.findIndex(c => c.id === id);
+    const shopIndex = coffeeShops.findIndex(c => c.compare(id));
     if (shopIndex < 0) {
         //no match was found
         return undefined;
@@ -102,10 +109,6 @@ function deleteCoffeeShop(id) {
         coffeeShops.splice(shopIndex, 1);
         return id;
     }
-}
-
-function getAll() {
-    return coffeeShops;
 }
 
 function initNextID() {
