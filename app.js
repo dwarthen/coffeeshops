@@ -30,9 +30,9 @@ app.post('/api/coffeeshop/lookup', (req, res) => {
     const schema = {
         id: Joi.number().integer().required()
     };
-    const result = Joi.validate(req.body, schema);
-    if (result.error) {
-        return res.status(400).send(result.error);
+    const {error} = Joi.validate(req.body, schema);
+    if (error) {
+        return res.status(400).send(error.details[0].message);
     }
 
     //find the coffee shop
@@ -57,9 +57,9 @@ app.post('/api/coffeeshop/create', (req, res) => {
         lat: Joi.number().min(-90).max(90).required(),
         lon: Joi.number().min(-180).max(180).required(),
     };
-    const result = Joi.validate(req.body, schema);
-    if (result.error) {
-        return res.status(400).send(result.error);
+    const {error} = Joi.validate(req.body, schema);
+    if (error) {
+        return res.status(400).send(error.details[0].message);
     }
 
     const newShopId = cs.add(-1, req.body.name, req.body.address, req.body.lat, req.body.lon);
@@ -74,10 +74,11 @@ app.post('/api/coffeeshop/nearest', (req, res) => {
     const schema = {
         address: Joi.string().min(3).required(),
     };
-    const result = Joi.validate(req.body, schema);
-    if (result.error) {
-        return res.status(400).send(result.error);
+    const {error} = Joi.validate(req.body, schema);
+    if (error) {
+        return res.status(400).send(error.details[0].message);
     }
+
     // Use the Google service to Geocode an address.
     googleMapsClient.geocode({
         address: req.body.address
@@ -105,9 +106,9 @@ app.put('/api/coffeeshop/update', (req, res) => {
         lat: Joi.number().min(-90).max(90).required(),
         lon: Joi.number().min(-180).max(180).required(),
     };
-    const result = Joi.validate(req.body, schema);
-    if (result.error) {
-        return res.status(400).send(result.error);
+    const {error} = Joi.validate(req.body, schema);
+    if (error) {
+        return res.status(400).send(error.details[0].message);
     }
 
     let matchId = cs.update(req.body.id, req.body.name, req.body.address, req.body.lat, req.body.lon);
@@ -126,9 +127,9 @@ app.delete('/api/coffeeshop/delete', (req, res) => {
     const schema = {
         id: Joi.number().integer().required()
     };
-    const result = Joi.validate(req.body, schema);
-    if (result.error) {
-        return res.status(400).send(result.error);
+    const {error} = Joi.validate(req.body, schema);
+    if (error) {
+        return res.status(400).send(error.details[0].message);
     }
 
     //find the coffee shop to delete by ID
