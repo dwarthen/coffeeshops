@@ -142,7 +142,7 @@ app.delete('/api/coffeeshop/delete', (req, res) => {
     }
 
     //find the coffee shop to delete by ID
-    const matchId = cs.delete(req.body.id);
+    const matchId = cs.delete(Number(req.body.id));
     if (matchId) {
         //a match was found, so delete it
         res.send({id: matchId});
