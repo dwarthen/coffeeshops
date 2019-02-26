@@ -1,6 +1,8 @@
 coffeeshops<br><br>
 A JSON RESTful service in node.js to maintain a list of coffee shops and to find the nearest one to an input address.
 
+This is a change... playing with github.
+
 It consists of three files:
 app.js - starts the service and handles the endpoints
 coffee_shops.js - manages the coffee shop info repository
