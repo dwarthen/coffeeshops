@@ -1,3 +1,4 @@
+//Github test version.
 // app.js starts up the service and processes the API endpoints:
 // lookup - /api/coffeeshop/lookup POST
 // create - /api/coffeeshop/create POST
@@ -184,6 +185,6 @@ cs.initNextID();
 
 //Listen for requests
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port, () => console.log(`Listening on port ${port}...`, 'This is a test version.'));
 
 module.exports = app;
